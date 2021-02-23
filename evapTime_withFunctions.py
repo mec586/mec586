@@ -92,7 +92,7 @@ def solveODE(rh, tempinf, h=0.001):
 
 
 # ____________________________________________________________
-# build matric with results
+# build matrix with results
 
 # TAU = np.zeros((len(RH), len(T)))
 # for i in range(len(RH)):
