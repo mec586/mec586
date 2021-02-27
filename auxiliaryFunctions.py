@@ -28,3 +28,9 @@ def Y1inf(RH, Tinf):
 def BM(Ts, X1s, RH, Tinf):
     return (Y1s(Ts, X1s) - Y1inf(RH, Tinf)) / (1 - Y1s(Ts, X1s))
 
+def S(m1, m3cr, m3d):
+    return m3d / (m1 + m3cr + m3d)
+
+def pmean(Rs, m1, m3cr, m3d):
+    m = m1 + m3cr + m3d
+    return (3 / (4 * pi * Rs**3)) * m
