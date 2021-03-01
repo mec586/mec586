@@ -6,7 +6,7 @@ from math import *
 # ____________________________________________________________
 # parameters
 
-Tinf = 310  # atmospheric temperature (K)
+Tinf = 290  # atmospheric temperature (K)
 RH = 0.60  # relative humidity
 Rs = 10**-5  # initial droplet radius (m), actually a variable
 

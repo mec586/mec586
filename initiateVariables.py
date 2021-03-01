@@ -7,14 +7,14 @@ from auxiliaryFunctions import *
 # ____________________________________________________________
 # variables
 
-m1 = 0.99 * (4 * pi * pl * Rs**3) / 3  # initial mass of water
-m3d = 0.01 * (4 * pi * pl * Rs**3) / 3  # initial mass of salt, as a fraction of initial droplet mass
+X1s = 0.6  # initial chi1 surface
+m1 = X1s * (4 * pi * pl * Rs**3) / 3  # initial mass of water
+m3d = (1 - X1s) * (4 * pi * pl * Rs**3) / 3  # initial mass of salt, as a fraction of initial droplet mass
 m3cr = 0  # initial mass of crystallized salt
 S = s(m1, m3cr, m3d)
 m = m1 + m3d + m3cr  # initial total mass of droplet
 As = 4 * pi * Rs*2  # initial surface of water
 Ts = 305.15  # initial temperature surface
-X1s = 0.6  # initial chi1 surface
 Pvap = pvap(Ts, X1s)  # initial pressure of saturated pressure
 pv = rhov(Ts, X1s)  # initial density of vapor
 BM = bm(Ts, X1s, RH, Tinf)

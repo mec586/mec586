@@ -8,7 +8,7 @@ from initiateConstants import *
 # auxiliary functions
 
 def Psat(Ts):
-    return 10 ** 3 * 0.61121 * exp((18.678 - (Ts - 273.15) / 234.5) * (Ts - 273.15) / (Ts - 273.15 + 257.14))
+    return 10**3 * 0.61121 * exp((18.678 - (Ts - 273.15) / 234.5) * (Ts - 273.15) / (Ts - 273.15 + 257.14))
 
 def pvap(Ts, X1s):
     return X1s * Psat(Ts)
@@ -20,13 +20,13 @@ def rhov(Ts, X1s):
     return pvap(Ts, X1s) * M1 / (R * Ts)  # try with p0 if doesn't work
 
 def y1s(Ts, X1s):
-    return pvap(Ts, X1s) * M1 / (pvap(Ts, X1s) * M1 + (1 - pvap(Ts, X1s)) * M2)
+    return pvap(Ts, X1s) * M1 / (pvap(Ts, X1s) * M1 + (p0 - pvap(Ts, X1s)) * M2)  # actually not p0 but p0 + 2gamma/R
 
 def x1s(m1, m3cr, m3d):
     return (m1 * M3) / (m1 * M3 + (m3cr + m3d) * M1)
 
 def y1inf(RH, Tinf):
-    return RH * Psat(Tinf) * M1 / (RH * Psat(Tinf) * M1 + (1 - RH *  Psat(Tinf)) * M2)
+    return RH * Psat(Tinf) * M1 / (RH * Psat(Tinf) * M1 + (p0 - RH *  Psat(Tinf)) * M2)  # actually not p0 but p0 + 2gamma/R
 
 def bm(Ts, X1s, RH, Tinf):
     return (y1s(Ts, X1s) - y1inf(RH, Tinf)) / (1 - y1s(Ts, X1s))
