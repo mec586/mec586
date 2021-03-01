@@ -1,8 +1,7 @@
 # ____________________________________________________________
 # import modules
 
-from math import *
-from integrateStep import *
+from dropletDynamics.integrateStep import *
 
 
 # ____________________________________________________________

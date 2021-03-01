@@ -1,7 +1,6 @@
 # ____________________________________________________________
 # import modules
-from math import *
-from auxiliaryFunctions import *
+from dropletDynamics.auxiliaryFunctions import *
 
 
 # ____________________________________________________________

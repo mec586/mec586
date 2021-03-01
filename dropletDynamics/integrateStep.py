@@ -1,7 +1,6 @@
 # ____________________________________________________________
 # import modules
-from math import *
-from initiateVariables import *
+from dropletDynamics.initiateVariables import *
 
 
 # ____________________________________________________________

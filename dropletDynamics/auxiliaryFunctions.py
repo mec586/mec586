@@ -1,8 +1,7 @@
 # ____________________________________________________________
 # import modules
 
-from math import *
-from initiateConstants import *
+from dropletDynamics.initiateConstants import *
 
 # ____________________________________________________________
 # auxiliary functions
