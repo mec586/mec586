@@ -11,7 +11,7 @@ def solveEuler(variables, Tair, Phie):
 
     i = 0
 
-    while i < 1000000 and variables['mass'][-1] > 0:
+    while i < 10000000 and variables['mass'][-1] > 0:
 
         # call values
         m, T, a = variables['mass'][-1], variables['temp'][-1], variables['rad'][-1]
@@ -23,5 +23,7 @@ def solveEuler(variables, Tair, Phie):
 
         # update iteration count
         i += 1
+
+        print('iteration')
 
     return [variables, i * step]

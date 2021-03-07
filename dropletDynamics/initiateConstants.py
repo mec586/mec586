@@ -7,15 +7,15 @@ from math import *
 # ____________________________________________________________
 # parameters
 
-Tair = 305  # atmospheric temperature (K)
-Phie = 0.8  # relative humidity
-a = 10**-4  # initial droplet radius (m), actually a variable
+# Tair = 305  # atmospheric temperature (K)
+# Phie = 0.8  # relative humidity
+a = 40 * 10**-6  # initial droplet radius (m), actually a variable
 
 
 # ____________________________________________________________
 # constants
 
-step = 0.000001  # integration step (s)
+step = 0.00001  # integration step (s)
 D = 3 * 10**(-5)  # diffusion coefficient (m**2/s)
 pe = 1.015 * 10**5  # atmospheric pressure (Pa)
 Rw = 461.7  # gas constant of water (J / (kg * K))
