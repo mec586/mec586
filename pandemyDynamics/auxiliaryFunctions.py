@@ -1,4 +1,5 @@
 # ____________________________________________________________
 # import modules
 
-from initiateConstants import *
+from pandemyDynamics.initiateConstants import *
+

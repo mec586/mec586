@@ -1,35 +1,29 @@
 # ____________________________________________________________
 # import modules
+
 from math import *
 
 
 # ____________________________________________________________
 # parameters
 
-Tinf = 290  # atmospheric temperature (K)
-RH = 0.60  # relative humidity
-Rs = 10**-5  # initial droplet radius (m), actually a variable
+Tair = 305  # atmospheric temperature (K)
+Phie = 0.8  # relative humidity
+a = 10**-4  # initial droplet radius (m), actually a variable
 
 
 # ____________________________________________________________
 # constants
 
-step = 0.0000001  # integration step (s)
-p0 = 1013.25 * 10**2  # atmospheric pressure (Pa)
-# L = 2.47 * 10**6  # latent heat of vaporisation
-R = 8.314462  # gas constant (J / (K.mol))
-M1 = 0.01801  # molecular mass of water (kg / mol)
-M2 = 0.028976  # molecular mass of air (kg / mol)
-M3 = 0.05844  # molecular mass of salt (kg / mol)
-t0 = 373.15  # reference air temperature
-pl = 1000  # density of liquid water (kg / m**3)
-ps = 2200  # density of salt (kg / m**3)
-Cpl = 4.18 * 10**3  # specific heat capacity (J / (kg.K))
-kg = 26 * 10**-3  # conductivity of air (W / (m.K))
-hfg = 2430 * 10**3  # specific latent heat of vaporization of liquid water (J / kg)
-el = 105 * 10**3  # specific internal energy of liquid vaper at 25° (J / kg), depends on T
-Ccr = 1.14 * 10**4  # (m/s)
-Ea = 58180  # activation energy (J / mol)
-gcr = 1
-Y3c = 0.393
-Dv = -2.775 * 10 ** -6 + 4.479 * 10 ** -8 * Tinf + 1.656 * 10 ** -10 * Tinf ** 2  # diffusivity of water vapor (m**2/s)
+step = 0.000001  # integration step (s)
+D = 3 * 10**(-5)  # diffusion coefficient (m**2/s)
+pe = 1.015 * 10**5  # atmospheric pressure (Pa)
+Rw = 461.7  # gas constant of water (J / (kg * K))
+Rair = 286.5  # gas constant of air (J / (kg * K))
+Mw = 18 * 10**(-3)  # molar mass of water (kg/mol)
+Mair = 29 * 10**(-3)  # molar mass of air (kg/mol)
+fev = 0.0024  # dimensionless coefficient accounting for air in Knudsen layer
+kair = 0.026  # thermal conductivity of air (W / (m * K))
+pw = 10**3  # density of water (kg / m**3)
+cw = 4.18 * 10**3  # heat capacity of water (J / (kg * K))
+Lev = 2.26 * 10**6  # vaporization enthalpy (J / kg)
