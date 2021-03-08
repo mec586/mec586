@@ -38,8 +38,8 @@ from dropletDynamics.solveFunctions import *
 # ____________________________________________________________
 # solve equations (TAIR, PHIE)
 
-TAIR = np.linspace(288.15, 308.15, 3)
-PHIE = np.linspace(0.4, 0.8, 3)
+TAIR = np.linspace(288.15, 308.15, 10)
+PHIE = np.linspace(0.4, 0.8, 10)
 
 LT = np.zeros((len(PHIE), len(TAIR)))  # initialize lifetime matrix
 
@@ -47,14 +47,13 @@ for i in range(len(PHIE)):
     for j in range(len(TAIR)):
         variables = initVariables(305, 40 * 10**-6)
         LT[i][j] = solveEuler(variables, TAIR[j], PHIE[i])[1]
-        print('solved')
 lt = np.array(LT)
 
 
 # ____________________________________________________________
 # plot lifetime (TAIR, PHIE)
 
-plt.imshow(lt, interpolation="gaussian", origin="upper")
+plt.imshow(lt, interpolation="gaussian", origin="upper")  # try origin lower
 plt.xlabel('temp')
 plt.xticks([0, len(TAIR)-1], [TAIR[0], TAIR[-1]])
 plt.ylabel('relative humidity')
@@ -66,12 +65,13 @@ plt.show()
 # ____________________________________________________________
 # solve equations
 
-# run = solveEuler(variables, Tair, Phie)
+# variables = initVariables(290, 100 * 10**-6)
+# run = solveEuler(variables, 298, 0.4)
 # solution, lifetime = run[0], run[1]
 # mass = solution['mass']
 # temp = solution['temp']
 # rad = solution['rad']
-# time = np.linspace(0, lifetime * step, num=len(mass))
+# time = np.linspace(0, lifetime, num=len(mass))
 
 
 # ____________________________________________________________

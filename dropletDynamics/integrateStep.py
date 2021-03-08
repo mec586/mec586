@@ -14,5 +14,5 @@ def integrateMass(T, a, Tair, Phie):
 def integrateTemp(T, a, Tair, Phie):
     return (1 / (pw * cw)) * ((3 * kair * (Tair - T)) / a**2 - 3 * integrateMass(T, a, Tair, Phie) * Lev / a)
 
-def integradeRad(T, a, Tair, Phie):
+def integrateRad(T, a, Tair, Phie):
     return integrateMass(T, a, Tair, Phie) / (4 * pi * pw * a**2)

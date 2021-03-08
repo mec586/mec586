@@ -10,8 +10,9 @@ from dropletDynamics.integrateStep import *
 def solveEuler(variables, Tair, Phie):
 
     i = 0
+    m0 = variables['mass'][-1]
 
-    while i < 10000000 and variables['mass'][-1] > 0:
+    while i < 1000000 and variables['mass'][-1] > m0 / 1000:
 
         # call values
         m, T, a = variables['mass'][-1], variables['temp'][-1], variables['rad'][-1]
@@ -19,7 +20,7 @@ def solveEuler(variables, Tair, Phie):
         # update values with integration step
         variables['mass'].append(m + step * integrateMass(T, a, Tair, Phie))
         variables['temp'].append(T + step * integrateTemp(T, a, Tair, Phie))
-        variables['rad'].append(a + step * integradeRad(T, a, Tair, Phie))
+        variables['rad'].append(a + step * integrateRad(T, a, Tair, Phie))
 
         # update iteration count
         i += 1
