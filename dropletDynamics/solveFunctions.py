@@ -11,11 +11,17 @@ def solveEuler(variables, Tair, Phie):
 
     i = 0
     m0 = variables['mass'][-1]
+    debug = []
 
-    while i < 1000000 and variables['mass'][-1] > m0 / 1000:
+    print('init mass', m0)
+
+    while i < 1000000 and variables['mass'][-1] > 0:
 
         # call values
         m, T, a = variables['mass'][-1], variables['temp'][-1], variables['rad'][-1]
+
+        # debug
+        debug.append(integrateMass(T, a, Tair, Phie))
 
         # update values with integration step
         variables['mass'].append(m + step * integrateMass(T, a, Tair, Phie))
@@ -25,6 +31,6 @@ def solveEuler(variables, Tair, Phie):
         # update iteration count
         i += 1
 
-        print('iteration')
+    # debug
 
     return [variables, i * step]

@@ -19,6 +19,7 @@ def phik(T, a, Tair, Phie):
     def f(T, a, x):
         return fev * psat(T) * (1 - x) / sqrt(2 * pi * Rw * T) - log((1 - psi(Tair) * Phie) / (1 - psi(T) * x)) * (D * pe) / (a * Rair * Tair)
     return sp.fsolve(lambda x: f(T, a, x), 1)[0]
+    # return Phie
 
 def initVariables(T, a):
     variables = {}
@@ -26,3 +27,6 @@ def initVariables(T, a):
     variables['temp'] = [T]  # initial droplet temperature (K)
     variables['rad'] = [a]  # initial droplet radius (m)
     return variables
+
+def calcMass(a):
+    return 4 * pi * pw * a**3 /3

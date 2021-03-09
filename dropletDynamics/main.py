@@ -3,6 +3,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.integrate as integrate
 from dropletDynamics.solveFunctions import *
 
 
@@ -14,9 +15,6 @@ from dropletDynamics.solveFunctions import *
 # Temp = np.linspace (285, 315)
 
 # PHIK = np.zeros((len(PHIE), len(TAIR)))  # initialize lifetime matrix
-
-# print(TAIR)
-# print(PHIE)
 
 # for i in range(len(PHIE)):
 #     for j in range(len(TAIR)):
@@ -38,8 +36,9 @@ from dropletDynamics.solveFunctions import *
 # ____________________________________________________________
 # solve equations (TAIR, PHIE)
 
-TAIR = np.linspace(288.15, 308.15, 10)
-PHIE = np.linspace(0.4, 0.8, 10)
+TAIR = np.linspace(278.15, 303.15, 10)
+PHIE = np.linspace(0.2, 0.8, 10)
+RAD = np.linspace(1 * 10**(-6), 100 * 10**(-6), 10)
 
 LT = np.zeros((len(PHIE), len(TAIR)))  # initialize lifetime matrix
 
@@ -53,7 +52,7 @@ lt = np.array(LT)
 # ____________________________________________________________
 # plot lifetime (TAIR, PHIE)
 
-plt.imshow(lt, interpolation="gaussian", origin="upper")  # try origin lower
+plt.imshow(lt, origin="upper")
 plt.xlabel('temp')
 plt.xticks([0, len(TAIR)-1], [TAIR[0], TAIR[-1]])
 plt.ylabel('relative humidity')
@@ -63,10 +62,37 @@ plt.show()
 
 
 # ____________________________________________________________
+# plot lifetime (RAD)
+
+# LT = [solveEuler(initVariables(305, rad), 293.15, 0.5)[1] for rad in RAD]
+# plt.plot(RAD, LT)
+# plt.show()
+
+# ____________________________________________________________
+# plot argln (PHIE, TAIR)
+
+# LN = np.zeros((len(PHIE), len(TAIR)))
+# inta = integrate.quad(lambda x: (3 * x / (4 * pi))**(1/3), 0, calcMass(10**(-5)))[0]
+
+# for i in range(len(PHIE)):
+#     for j in range(len(TAIR)):
+#         LN[i][j] = inta * Rair * TAIR[j] / (D * log((1 - psi(TAIR[j]) * PHIE[i]) / (1 - psi(305) * 1.9 * PHIE[j])))
+# ln = np.array(LN)
+
+# plt.imshow(ln, origin="upper", interpolation="gaussian")
+# plt.xlabel('temp')
+# plt.xticks([0, len(TAIR)-1], [TAIR[0], TAIR[-1]])
+# plt.ylabel('relative humidity')
+# plt.yticks([0, len(PHIE)-1], [PHIE[0], PHIE[-1]])
+# plt.colorbar()
+# plt.show()
+
+
+# ____________________________________________________________
 # solve equations
 
-# variables = initVariables(290, 100 * 10**-6)
-# run = solveEuler(variables, 298, 0.4)
+# variables = initVariables(305, 10 * 10**-6)
+# run = solveEuler(variables, 293.15, 0.4)
 # solution, lifetime = run[0], run[1]
 # mass = solution['mass']
 # temp = solution['temp']
@@ -88,7 +114,6 @@ plt.show()
 # plt.plot(time, rad, label='rad')
 # plt.legend()
 # plt.show()
-
 
 # ____________________________________________________________
 # debug
