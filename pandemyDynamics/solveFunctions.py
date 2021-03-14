@@ -12,7 +12,7 @@ def solveEuler(P, Pstar, H, R ,X):
 
     i = 0
 
-    while i < 100000:
+    while i < 40000:
 
         p = P[-1]
         pstar = Pstar[-1]

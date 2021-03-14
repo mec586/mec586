@@ -7,7 +7,7 @@ from math import *
 # ____________________________________________________________
 # constants
 
-k1 = 0.53  # in days
+k1 = 10  # in days
 k2 = 1  # in days
 k3 = 0.08  # 1/14, in days
 # h0 = 0.9999
